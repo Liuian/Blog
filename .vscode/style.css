@@ -1,0 +1,9 @@
+body {
+    font-family: 'OpenDyslexic', 'Gen Jyuu GothicX', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 2 !important;
+}
+
+code, pre {
+    font-family: 'OpenDyslexic', 'Gen Jyuu Gothic X', monospace !important;
+}

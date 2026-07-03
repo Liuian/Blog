@@ -2,34 +2,63 @@
 layout: default
 title: Git
 ---
+# Git
+
 ## Local Repo Connect to a Remote Repository
 - `git init`
 - `git remote add origin <liink.git>`
 - `git remote -v`
 
-## .gitignore
+## First Pull & Push Note
+- `git pull origin main`: Pull latest changes from remote main branch
+- `git add .`: Add all new or changed files
+- `git commit -m "first commit"`: Commit changes with a message
+- `git branch`: Check current branch name
+- `git push -u origin {branch_name}`: Push to remote main branch and set upstream
+
+## Basic Git Workflow: Add, Commit, and Push
+- `git add .`: Stage all changes in working directory for the next commit.
+- `git commit -m '<message>'`: Save staged changes to the local repository with a descriptive message explaining what this commit does.
+- `git push`: Upload local commits to the remote repository (e.g., GitHub), making changes visible to others.
+
+## Create and Edit a `.gitignore` File
 - (wins) `New-Item -Path . -Name ".gitignore" -ItemType "File" -Force`
 - (linux) `nano .gitignore`
+- (mac) 
+   1. `touch .gitignore`: Create .gitignore file
+   2. `nano .gitignore`: Edit in terminal
+   3. press `Ctrl + O`: Write out
+   4. press `Enter`: Check file name correct
+   5. press `Ctrl + x`: Exit nano editor
 
+### `.gitignore` content example
 ``` bash
 # .gitignore
 *.tsv
 *.geojson
 ```
 
-## add, commit, push
-- `git add .`
-- `git commit -m '<message>'`
-- first push. Check current branch name: `git branch`
-- first push: `git push -u origin [branch name]`
-- `git push`
-- `git rm --cached <檔案或資料夾路徑>` : 將檔案從索引中移除（不刪本地檔案）
+## Remove a File from Tracking (Keep It Locally)
+Scenario: Already pushed a file to a GitHub repo but now want to remove it from version control - keeping it only on local maching and ignoring it in the future.
+1. `git rm --cached {file_name}`: Stop tracking the file(but keep it locally).
+2. `echo "{file_name}" >> .gitignore`: Add the file to `.gitignore` so it's not tracked again.
+3. `git add .gitignore`: Stage the updated `.gitignore` file.
+4. `git commit -m "{commit_message}"`
+5. `git push`
 
-## branch
+## Retrieving a File from an Older Git Commit (Without Overwriting Current Version)
+1.  **Check file history:** `git log -- Multinomial_naive_Bayes/main.py` → find the commit hash where the file was modified (e.g. `050e8222`).
+2. **Extract old version:** `git show 050e8222:Multinomial_naive_Bayes/main.py > Multinomial_naive_Bayes/main_old.py` → save the historical version as `main_old.py` without overwriting the current `main.py`.
+3. (Optional) Add and commit the retrieved file: `git commit -m "Add historical version of main.py from commit 050e8222"`
+
+
+## Git Branch Management
 - check current branch name: `git branch`
-- rename current branch locally: `git branch -M pu_building`
+- rename current branch locally: `git branch -M {branch name}`
 - delete old branch: `git push origin --delete master`
 - verify everthing: `git branch -a`
+- 切換到新分支:`git checkout experiment`
+
 
 ## Force pull from a Git remote repository & discard all local changes
 

@@ -250,7 +250,7 @@ p code, li code {   /* code - Inline code styling (e.g. `example`) */
 #toggle-sidebar:hover {
     background: var(--accent-color);
 }
-
+ 
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links {

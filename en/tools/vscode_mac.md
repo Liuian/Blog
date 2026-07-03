@@ -2,9 +2,39 @@
 layout: default
 title: VScode
 ---
-# short key
+# VScode
+
+## shortcuts
 - 從某一位置一次選取多行: `Alt + Shift`
 - Zen mode. Enter distraction-free Zen mode. Keyboard Shortcut: Ctrl+K Z. zen mode. Press Esc twice to exit Zen Mode.
+
+- On **Mac + VS Code**, the shortcut to **delete a whole line at once** is:
+
+    ```
+    ⇧ Shift + ⌘ Command + K
+    ```
+
+- **Cut a line** (remove + copy to clipboard):
+
+  ```
+  ⌘ Command + X
+  ```
+
+  (even if nothing is selected, it cuts the whole line)
+
+- **Move a line up/down**:
+
+  ```
+  ⌥ Option + ↑ / ↓
+  ```
+
+- **Duplicate a line**:
+
+  ```
+  ⇧ Shift + ⌥ Option + ↓
+  ```
+
+- **Word Wrap**: `Option + z`
 
 # VS Code Python Tool Does Multiple Interactive Windows
 - [VS Code Python Tool Does Multiple Interactive Windows](https://visualstudiomagazine.com/articles/2020/08/13/vs-code-python.aspx)

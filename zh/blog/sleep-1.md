@@ -15,7 +15,7 @@ Circadian rhythms is a human body's pattern which is inherited from our ancestor
 
 First, our ancestor live in an island where do not have artificial light. The only illumination they use is fire. Second, they empty their bladder first and leisurely have their breakfast when they wake up. In addition, they expose to natural sun light. Last but not least, human start to secrete melatonin, which help us feel sleepy, around 9:00 p.m. and stop around 9:00 a.m..  
 
-![image](../assets/images/blog/sleep1.jpg)
+![image](../../assets/images/blog/sleep1.jpg)
 `Excerpt From: Littlehales, Nick. "Sleep." Apple Books.`
 
 ## How important is human body's circadian rhythms?
