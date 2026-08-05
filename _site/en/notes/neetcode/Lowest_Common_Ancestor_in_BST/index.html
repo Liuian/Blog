@@ -1,0 +1,165 @@
+<h2 id="-leetcode-link">🔗 LeetCode Link</h2>
+<p><a href="https://neetcode.io/problems/lowest-common-ancestor-in-binary-search-tree?list=blind75">NeetCode - Lowest Common Ancestor In Binary Search Tree</a></p>
+
+<h2 id="-problem-description">🧾 Problem Description</h2>
+<blockquote>
+  <p>Given a binary search tree (BST) where all node values are unique, and two nodes from the tree p and q, return the lowest common ancestor (LCA) of the two nodes.</p>
+</blockquote>
+
+<blockquote>
+  <p>The lowest common ancestor between two nodes p and q is the lowest node in a tree T such that both p and q as descendants. The ancestor is allowed to be a descendant of itself.</p>
+</blockquote>
+
+<ul>
+  <li>Example:
+    <ul>
+      <li>
+        <p><img src="/assets/images/notes/lowest_commom_ancestor_in_bst.png" alt="alt text" /></p>
+      </li>
+      <li>Example 1
+        <ul>
+          <li>Input: root = [5,3,8,1,4,7,9,null,2], p = 3, q = 8; Output: 5</li>
+        </ul>
+      </li>
+      <li>Example 2
+        <ul>
+          <li>Input: root = [5,3,8,1,4,7,9,null,2], p = 3, q = 4; Output: 3</li>
+          <li>Explanation: The LCA of nodes 3 and 4 is 3, since a node can be a descendant of itself.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Constraints:
+    <ul>
+      <li>2 &lt;= The number of nodes in the tree &lt;= 100.</li>
+      <li>-100 &lt;= Node.val &lt;= 100</li>
+      <li>p != q</li>
+      <li>p and q will both exist in the BST.</li>
+    </ul>
+  </li>
+  <li>Recommended Time &amp; Space Complexity
+    <ul>
+      <li>You should aim for a solution as good or better than O(h) time and O(h) space, where h is the height of the given tree.</li>
+    </ul>
+  </li>
+  <li>Hint
+    <ul>
+      <li>
+        <p>Hint 1: A Binary Search Tree (BST) is a tree in which the values of all nodes in the left subtree of a node are less than the node’s value, and the values of all nodes in the right subtree are greater than the node’s value. Additionally, every subtree of a BST must also satisfy this property, meaning the “less than” or “greater than” condition is valid for all nodes in the tree, not just the root. How can you use this idea to find the LCA of the given nodes in the tree?</p>
+      </li>
+      <li>
+        <p>Hint 2: We can use recursion to traverse the tree. Can you figure out the conditions we encounter when choosing a path between the left and right subtrees during traversal using the values of the two given nodes? Perhaps you can determine the LCA by traversing based on these conditions.</p>
+      </li>
+      <li>
+        <p>Hint 3: If nodes p and q are in different subtrees, a split occurs, making the current node the LCA. If both are in the left or right subtree, the LCA lies in that subtree and we further choose that subtree to traverse using recursion. You should also handle other multiple scenarios to get the LCA.</p>
+      </li>
+      <li>
+        <p>Hint 4: The LCA can also be one of the nodes, p or q, if the current node is equal to either of them. This is because if we encounter either p or q during the traversal, that node is the LCA.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-my-python-solution">🧠 My Python Solution</h2>
+
+<p><strong>Solution 1</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="c1"># Helper function to find path from root to target node
+</span>    <span class="k">def</span> <span class="nf">find_path</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        
+        <span class="n">path</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">node</span><span class="p">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">target</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="nf">find_path</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="ow">or</span> <span class="n">self</span><span class="p">.</span><span class="nf">find_path</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="n">right</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        
+        <span class="n">path</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">lowestCommonAncestor</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TreeNode</span><span class="p">:</span>
+        <span class="n">path_p</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">path_q</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">found_p</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">find_path</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">path_p</span><span class="p">)</span>
+        <span class="n">found_q</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">find_path</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">path_q</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">found_p</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">found_q</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>  <span class="c1"># One of the nodes was not found in the tree
+</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">path_p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">path_q</span><span class="p">)</span> <span class="ow">and</span> <span class="n">path_p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">path_q</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">path_p</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><strong>Solution 2</strong></p>
+
+<p>Reference: <a href="https://youtu.be/gs2LMfuOR9k">Lowest Common Ancestor of a Binary Search Tree - Leetcode 235 - Python</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">lowestCommonAncestor</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TreeNode</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span>
+
+        <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span> <span class="ow">and</span> <span class="n">q</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="n">right</span>
+            <span class="k">elif</span> <span class="n">p</span><span class="p">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span> <span class="ow">and</span> <span class="n">q</span><span class="p">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="n">left</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">cur</span>
+    
+        <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<h2 id="-thought-process">💡 Thought Process</h2>
+<ul>
+  <li>First idea
+    <ol>
+      <li>Move the node at the deeper level up until it reaches the same level as the other node.</li>
+      <li>While both nodes are not the seme, move each node up one level until they meet.</li>
+    </ol>
+  </li>
+  <li>Second idea - After coding (Solution 1)
+    <ol>
+      <li>Find the path from the root to each target node.</li>
+      <li>Compare thers tow paths to identify the last common node.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Third idea - After watching video Explanation and read hints</p>
+  </li>
+  <li>video solution:
+    <ul>
+      <li>method: find node split two nodes (p and q)</li>
+      <li>time complexity: visit one noed each level -&gt; hight of the tree -&gt; O(log n)</li>
+      <li>space complexity: O(1) - since no need data structure to store</li>
+    </ul>
+  </li>
+  <li>code solution:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+      <span class="k">def</span> <span class="nf">lowestCommonAncestor</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="sh">'</span><span class="s">TreeNode</span><span class="sh">'</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="sh">'</span><span class="s">TreeNode</span><span class="sh">'</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="sh">'</span><span class="s">TreeNode</span><span class="sh">'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="sh">'</span><span class="s">TreeNode</span><span class="sh">'</span><span class="p">:</span>
+          <span class="n">cur</span> <span class="o">=</span> <span class="n">root</span>
+
+          <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+              <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span> <span class="ow">and</span> <span class="n">q</span><span class="p">.</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                  <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="n">left</span>
+              <span class="k">elif</span> <span class="n">p</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span> <span class="ow">and</span> <span class="n">q</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+                  <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="n">right</span>
+              <span class="k">else</span><span class="p">:</span>
+                  <span class="k">return</span> <span class="n">cur</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+

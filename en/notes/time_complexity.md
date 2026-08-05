@@ -1,3 +1,7 @@
+---
+layout: default
+title: Time Complexity
+---
 # Time complexity
 ## Average Time Complexity of HashMap = O(1)
 - Average Case:

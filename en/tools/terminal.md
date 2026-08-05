@@ -1,3 +1,7 @@
+---
+layout: default
+title: Terminal
+---
 # Terminal
 
 * **Create a `.gitignore` file**

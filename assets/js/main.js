@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 初始化 tocbot
+    // 1. 初始化 tocbot
     tocbot.init({
         tocSelector: '.js-toc',
         contentSelector: '.js-toc-content',
@@ -10,44 +10,73 @@ document.addEventListener("DOMContentLoaded", function () {
         orderedList: false,
     });
 
-    // 切換 TOC 側邊欄顯示
+    // 2. 切換 TOC 側邊欄顯示
     const toggleButton = document.getElementById("toggle-sidebar");
     const sidebar = document.querySelector(".sidebar");
-    toggleButton.addEventListener("click", function () {
-        const isCollapsed = sidebar.classList.toggle("collapsed");
-        toggleButton.classList.toggle("expanded", !isCollapsed); 
-    });
+    if (toggleButton && sidebar) {
+        toggleButton.addEventListener("click", function () {
+            const isCollapsed = sidebar.classList.toggle("collapsed");
+            toggleButton.classList.toggle("expanded", !isCollapsed); 
+        });
+    }
 
-    // Jump to top 功能
+    // 3. Jump to top 功能
     const toTopBtn = document.createElement("button");
     toTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     toTopBtn.className = "jump-top-btn";
     document.body.appendChild(toTopBtn);
+    
     toTopBtn.addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // 捲動到一定高度後顯示「Top」按鈕
+    // 4. 捲動到一定高度後顯示「Top」按鈕
     window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {toTopBtn.style.display = "block";} 
-        else {toTopBtn.style.display = "none";}
+        if (window.scrollY > 300) {
+            toTopBtn.style.display = "block";
+        } else {
+            toTopBtn.style.display = "none";
+        }
     });
 
-    // 語言切換
-    const langMatch = window.location.pathname.match(/\/Pages_Blog\/(en|zh|nl|de)\//); // 偵測當前語言碼
-    const lang = langMatch ? langMatch[1] : "en"; // 預設語言為英文
-    document.getElementById("home-link").href  = `/Pages_Blog/${lang}/`; // 動態更新連結
-    document.getElementById("tools-link").href = `/Pages_Blog/${lang}/tools/`; // 動態更新連結
-    document.getElementById("notes-link").href = `/Pages_Blog/${lang}/notes/`; // 動態更新連結
-    document.getElementById("blog-link").href  = `/Pages_Blog/${lang}/blog/`; // 動態更新連結
-    document.getElementById("about-link").href = `/Pages_Blog/${lang}/about`; // 動態更新連結
-    const langSelect = document.getElementById('language-select'); // 語言選單初始化
-    langSelect.value = `/${lang}/`; // 語言選單初始化
-        // 語言變更時切換網址
-    langSelect.addEventListener('change', function () {
-        const selectedLang = this.value.replace(/\//g, ''); // e.g. "zh"
-        const currentPath = window.location.pathname;
-        const newPath = currentPath.replace(/\/Pages_Blog\/(en|zh|nl|de)\//, `/Pages_Blog/${selectedLang}/`); // 替換語言碼
-        window.location.pathname = newPath; // 導向
-    });
+    // 5. 語言切換與導覽列連結動態更新 (修正  問題)
+    const supportedLangs = ['en', 'zh', 'nl', 'de'];
+    
+    // 從網址中尋找目前的語言 (例如從 /en/about/ 抓取 "en")
+    const pathMatch = window.location.pathname.match(/\/(en|zh|nl|de)(\/|$)/);
+    const currentLang = pathMatch ? pathMatch[1] : "en";
+
+    // 動態更新導覽列連結 (使用純對相對路徑，徹底拋棄 /)
+    const setLink = (id, targetPath) => {
+        const el = document.getElementById(id);
+        if (el) el.href = `/${currentLang}/${targetPath}`;
+    };
+
+    setLink("home-link", "");
+    setLink("tools-link", "tools/");
+    setLink("notes-link", "notes/");
+    setLink("blog-link", "blog/");
+    setLink("about-link", "about/");
+
+    // 6. 語言下拉選單邏輯
+    const langSelect = document.getElementById('language-select');
+    if (langSelect) {
+        langSelect.value = currentLang;
+
+        langSelect.addEventListener('change', function () {
+            const selectedLang = this.value;
+            const currentPath = window.location.pathname;
+
+            let newPath;
+            // 如果網址開頭已有語系 (如 /en/blog/)，替換它
+            if (/\/(en|zh|nl|de)(\/|$)/.test(currentPath)) {
+                newPath = currentPath.replace(/\/(en|zh|nl|de)(\/|$)/, `/${selectedLang}/`);
+            } else {
+                // 如果沒有語系，則加在最前面
+                newPath = `/${selectedLang}${currentPath}`;
+            }
+
+            window.location.pathname = newPath;
+        });
+    }
 });

@@ -1,3 +1,7 @@
+---
+layout: default
+title: Sleep 2
+---
 # "Sleep"_What you experience during the night.
 
 
@@ -11,7 +15,7 @@
 
 A whole night sleep is divided into couples of same cycles (though there is a little different between these cycles). During each cycle we experience 4 different states. In addition, every cycle continued for about 90 minutes.
 
-![image](../assets/images/blog/sleep2.jpg)
+![image](/assets/images/blog/sleep2.jpg)
 
 ## Four different states in a 90 minutes cycle.
 ### 1. Dozing off - non REM stage 1

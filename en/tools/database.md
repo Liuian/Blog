@@ -1,3 +1,7 @@
+---
+layout: default
+title: Database
+---
 # DB 使用方法
 
 ## DBeaver
@@ -9,4 +13,4 @@
 
 ### 改字體大小
 - `window` -> `perferences` -> `User interface` -> `appearance` -> `colors and font` -> `DBeaver Fonts` -> `Main Font`
-- ![alt text](/Pages_Blog/assets/images/tools/database-1.png)
+- ![alt text](/assets/images/tools/database-1.png)

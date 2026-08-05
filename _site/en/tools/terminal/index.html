@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Terminal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Terminal | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Terminal" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/en/tools/terminal/" />
+<meta property="og:url" content="https://liuyian.uk/en/tools/terminal/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Terminal" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Terminal","url":"https://liuyian.uk/en/tools/terminal/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h1 id="terminal">Terminal</h1>
+
+<ul>
+  <li>
+    <p><strong>Create a <code class="language-plaintext highlighter-rouge">.gitignore</code> file</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch</span> .gitignore
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Quickly append <code class="language-plaintext highlighter-rouge">.python-version</code> to <code class="language-plaintext highlighter-rouge">.gitignore</code></strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">".python-version"</span> <span class="o">&gt;&gt;</span> .gitignore
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Check the contents</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> .gitignore
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

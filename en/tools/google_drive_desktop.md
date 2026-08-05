@@ -1,3 +1,7 @@
+---
+layout: default
+title: Google Drive Desktop
+---
 # 🛠 解決 Google Drive Desktop 當機問題：清除 DriveFS 快取資料夾
 
 ## 📂 什麼是 DriveFS？

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pyenv Mac</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Pyenv Mac | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Pyenv Mac" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/en/tools/pyenv_mac/" />
+<meta property="og:url" content="https://liuyian.uk/en/tools/pyenv_mac/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Pyenv Mac" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Pyenv Mac","url":"https://liuyian.uk/en/tools/pyenv_mac/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h1 id="pyenv-for-mac--pip">pyenv for mac &amp; pip</h1>
+
+<h2 id="pyenv">pyenv</h2>
+<ul>
+  <li>List all pyenv environments: <code class="language-plaintext highlighter-rouge">pyenv versions</code></li>
+  <li>List all packages in envs: <code class="language-plaintext highlighter-rouge">pip list</code></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>Setup new pyenv environment: <code class="language-plaintext highlighter-rouge">pyenv virtualenv {python_version} {env_name}</code></li>
+  <li>Delete a pyenv environment: <code class="language-plaintext highlighter-rouge">pyenv uninstall {env_name}</code></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>Set a local python version: <code class="language-plaintext highlighter-rouge">pyenv local {env_name}</code></li>
+  <li>Unset that local version: <code class="language-plaintext highlighter-rouge">rm .python-version</code></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>Activate environment: <code class="language-plaintext highlighter-rouge">pyenv activate {env_name}</code></li>
+  <li>Deactivate env: <code class="language-plaintext highlighter-rouge">pyenv deactivate</code></li>
+</ul>
+
+<p>–</p>
+
+<ul>
+  <li>Search all avaliable versions for pyenv: <code class="language-plaintext highlighter-rouge">pyenv install --list</code></li>
+  <li>Install a new python version in pyenv: <code class="language-plaintext highlighter-rouge">pyenv install {python_version}</code></li>
+</ul>
+
+<hr />
+
+<h2 id="pip">pip</h2>
+<ul>
+  <li>Set a requirements.txt to record packages: <code class="language-plaintext highlighter-rouge">pip freeze &gt; requirements.txt</code></li>
+  <li>Install all packages in requirements.txt: <code class="language-plaintext highlighter-rouge">pip install -r requirements.txt</code></li>
+</ul>
+
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

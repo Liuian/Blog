@@ -1,3 +1,7 @@
+---
+layout: default
+title: Java
+---
 ## 建置環境
 1. 安裝 `jabba` - 環境管理工具
     - 執行 `iwr -useb https://github.com/shyiko/jabba/raw/master/install.ps1 | iex`

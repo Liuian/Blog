@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Excel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Excel | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Excel" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/zh/tools/excel/" />
+<meta property="og:url" content="https://liuyian.uk/zh/tools/excel/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Excel" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Excel","url":"https://liuyian.uk/zh/tools/excel/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h1 id="excel-vba-tools">Excel VBA tools</h1>
+<h2 id="每行重複多次">每行重複多次</h2>
+<pre><code class="language-vba">Sub insertrows()
+'Updateby Extendoffice
+Dim I As Long
+Dim xCount As Integer
+LableNumber:
+xCount = Application.InputBox("Number of Rows", "Kutools for Excel", , , , , , 1)
+If xCount &lt; 1 Then
+MsgBox "the entered number of rows is error ,please enter again", vbInformation, "Kutools for Excel"
+GoTo LableNumber
+End If
+For I = Range("A" &amp; Rows.CountLarge).End(xlUp).Row To 2 Step -1
+Rows(I).Copy
+Rows(I).Resize(xCount).Insert
+Next
+Application.CutCopyMode = False
+End Sub
+</code></pre>
+
+<h2 id="多次復制一個特定行">多次復制一個特定行</h2>
+<pre><code class="language-vba">Sub test()
+'Updateby Extendoffice
+    Dim xCount As Integer
+LableNumber:
+    xCount = Application.InputBox("Number of Rows", "Kutools for Excel", , , , , , 1)
+    If xCount &lt; 1 Then
+        MsgBox "the entered number of rows is error, please enter again", vbInformation, "Kutools for Excel"
+        GoTo LableNumber
+    End If
+    ActiveCell.EntireRow.Copy
+    Range(ActiveCell.Offset(1, 0), ActiveCell.Offset(xCount, 0)).EntireRow.Insert Shift:=xlDown
+    Application.CutCopyMode = False
+End Sub
+</code></pre>
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

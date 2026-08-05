@@ -1,3 +1,7 @@
+---
+layout: default
+title: Pyenv Mac
+---
 # pyenv for mac & pip
 
 ## pyenv

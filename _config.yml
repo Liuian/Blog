@@ -1,0 +1,13 @@
+title: Ian's Blog
+url: "https://liuyian.uk"
+
+# 啟用外掛
+plugins:
+  - jekyll-seo-tag
+
+# 讓網址呈現乾淨的資料夾結構 (例如 /en/tools/brew/)
+permalink: pretty
+
+# 排除不需要編譯的資料夾
+exclude:
+  - LICENSE

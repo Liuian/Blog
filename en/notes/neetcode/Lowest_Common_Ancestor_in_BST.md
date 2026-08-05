@@ -13,7 +13,7 @@ date: 2025-06-19
 > The lowest common ancestor between two nodes p and q is the lowest node in a tree T such that both p and q as descendants. The ancestor is allowed to be a descendant of itself.
 
 - Example:
-    - ![alt text](/Pages_Blog/assets/images/notes/lowest_commom_ancestor_in_bst.png)
+    - ![alt text](/assets/images/notes/lowest_commom_ancestor_in_bst.png)
     
     - Example 1
         - Input: root = [5,3,8,1,4,7,9,null,2], p = 3, q = 8; Output: 5

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>VScode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>VScode | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="VScode" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/zh/tools/vscode/" />
+<meta property="og:url" content="https://liuyian.uk/zh/tools/vscode/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="VScode" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"VScode","url":"https://liuyian.uk/zh/tools/vscode/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h1 id="short-key">short key</h1>
+<ul>
+  <li>從某一位置一次選取多行: <code class="language-plaintext highlighter-rouge">Alt + Shift</code></li>
+  <li>Zen mode. Enter distraction-free Zen mode. Keyboard Shortcut: Ctrl+K Z. zen mode. Press Esc twice to exit Zen Mode.</li>
+</ul>
+
+<h1 id="vs-code-python-tool-does-multiple-interactive-windows">VS Code Python Tool Does Multiple Interactive Windows</h1>
+<ul>
+  <li><a href="https://visualstudiomagazine.com/articles/2020/08/13/vs-code-python.aspx">VS Code Python Tool Does Multiple Interactive Windows</a></li>
+  <li>Just open the settings page (File &gt; Preferences &gt; Settings), search for <code class="language-plaintext highlighter-rouge">interactive window mode</code> and change the setting value to <code class="language-plaintext highlighter-rouge">perFile</code>. Now when you run cells from different files, they will each run on their own separate window.”</li>
+</ul>
+
+<h1 id="remote-ssh">remote ssh</h1>
+<ol>
+  <li>install extension in vscode
+    <ul>
+      <li>install remote ssh, it will also install other two extension</li>
+      <li><img src="/assets/images/tools/vscode-1.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>Set Up SSH Configuration
+    <ul>
+      <li>Open the Command Palette by pressing <code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code> and type <code class="language-plaintext highlighter-rouge">Remote-SSH: Open Configuration File</code>.</li>
+      <li>Select the SSH configuration file to edit (usually ~/.ssh/config).</li>
+      <li><img src="/assets/images/tools/vscode-3.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>Connect to the Remote Server
+    <ul>
+      <li>Open the Command Palette again (<code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code>) and type <code class="language-plaintext highlighter-rouge">Remote-SSH: Connect to Host</code>.</li>
+      <li>Select the my_remote_server entry (or whatever name you used).</li>
+      <li>VS Code will connect to the remote server and open a new window.</li>
+      <li><img src="/assets/images/tools/vscode-2.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>Select Miniconda Python Environment
+    <ul>
+      <li>After connecting to the remote server, press <code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code> again and search for <code class="language-plaintext highlighter-rouge">Python: Select Interpreter</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>TODO: 查這個jupyter是怎麼連上server的，port是多少，config是哪個檔案</li>
+</ul>
+
+<h1 id="vscode-pandoc">vscode-pandoc</h1>
+<ul>
+  <li>https://marketplace.visualstudio.com/items?itemName=DougFinke.vscode-pandoc</li>
+  <li>https://github.com/jgm/pandoc/releases/tag/3.5
+    <ol>
+      <li>download <code class="language-plaintext highlighter-rouge">pandoc-3.5-windows-x86_64.msi</code></li>
+      <li>install</li>
+      <li>press <code class="language-plaintext highlighter-rouge">F1</code> search <code class="language-plaintext highlighter-rouge">pandoc rendor</code>, and press document type wanted</li>
+    </ol>
+  </li>
+  <li>note that there should not have word file opened in the computer, or will show error</li>
+</ul>
+
+<h1 id="jupyter-enviromnent">Jupyter enviromnent</h1>
+<ol>
+  <li>打开 VS Code 设置： Windows/Linux: <code class="language-plaintext highlighter-rouge">Ctrl + ,</code></li>
+  <li>搜索 <code class="language-plaintext highlighter-rouge">Jupyter Command Line Arguments</code></li>
+  <li>click <code class="language-plaintext highlighter-rouge">edit in settings.json</code>
+    <ul>
+      <li><img src="/assets/images/tools/jupyter-4.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>add arguments - <code class="language-plaintext highlighter-rouge">"--port=8886"</code>
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"python.defaultInterpreterPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/covmo/miniconda3/envs/py36_gis/bin/python"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"jupyter.jupyterCommandLineArguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">    
+         </span><span class="s2">"--port=8886"</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+     </span><span class="nl">"jupyter.allowUnauthorizedRemoteConnection"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>search current jupyter notebook list
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>jupyter notebook list
+ Currently running servers:
+ http://192.168.1.128:9876/ :: /home/covmo/jupyter_data
+ http://192.168.1.128:8886/ :: /home/covmo
+ http://192.168.1.128:8888/ :: /data/tmp/sheldon/dem/salt/mapbox
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h1 id="設定預覽模式">設定預覽模式</h1>
+<p>在 VSCode 中，你可以設定「<strong>點擊一次預覽、點擊兩次才固定開啟檔案</strong>」的行為，這功能叫做 <strong>預覽模式（Preview Mode）</strong>。若你想要 <strong>點一下只預覽，點兩下才固定打開</strong>（避免每次點檔案都開太多 tab），請依照下列步驟設定：</p>
+
+<ol>
+  <li>打開 VSCode。</li>
+  <li>點左下角齒輪 → 選「<strong>設定</strong>」。</li>
+  <li>搜尋 <code class="language-plaintext highlighter-rouge">workbench.editor.enablePreview</code></li>
+  <li>勾選 ✅「<strong>Workbench › Editor: Enable Preview</strong>」
+    <ul>
+      <li>開啟後：點一下檔案是「預覽」，點兩下才「固定」這個檔案。</li>
+      <li>關閉後：每次點檔案都會新開一個 tab。</li>
+    </ul>
+  </li>
+</ol>
+
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

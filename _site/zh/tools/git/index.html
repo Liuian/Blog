@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Git</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Git | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Git" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/zh/tools/git/" />
+<meta property="og:url" content="https://liuyian.uk/zh/tools/git/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Git" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Git","url":"https://liuyian.uk/zh/tools/git/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h2 id="local-repo-connect-to-a-remote-repository">Local Repo Connect to a Remote Repository</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git init</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git remote add origin &lt;liink.git&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git remote -v</code></li>
+</ul>
+
+<h2 id="gitignore">.gitignore</h2>
+<ul>
+  <li>(wins) <code class="language-plaintext highlighter-rouge">New-Item -Path . -Name ".gitignore" -ItemType "File" -Force</code></li>
+  <li>(linux) <code class="language-plaintext highlighter-rouge">nano .gitignore</code></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .gitignore</span>
+<span class="k">*</span>.tsv
+<span class="k">*</span>.geojson
+</code></pre></div></div>
+
+<h2 id="add-commit-push">add, commit, push</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git add .</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git commit -m '&lt;message&gt;'</code></li>
+  <li>first push. Check current branch name: <code class="language-plaintext highlighter-rouge">git branch</code></li>
+  <li>first push: <code class="language-plaintext highlighter-rouge">git push -u origin [branch name]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">git push</code></li>
+</ul>
+
+<h2 id="branch">branch</h2>
+<ul>
+  <li>check current branch name: <code class="language-plaintext highlighter-rouge">git branch</code></li>
+  <li>rename current branch locally: <code class="language-plaintext highlighter-rouge">git branch -M pu_building</code></li>
+  <li>delete old branch: <code class="language-plaintext highlighter-rouge">git push origin --delete master</code></li>
+  <li>verify everthing: <code class="language-plaintext highlighter-rouge">git branch -a</code></li>
+</ul>
+
+<h2 id="force-pull-from-a-git-remote-repository--discard-all-local-changes">Force pull from a Git remote repository &amp; discard all local changes</h2>
+
+<p>To <strong>force pull from a Git remote repository</strong> and <strong>discard all local changes</strong>, follow these steps carefully. This will overwrite your local files and history with the latest from the remote, <strong>so make sure you’re okay with losing any uncommitted local work</strong>.</p>
+
+<hr />
+
+<h3 id="-warning">🚨 WARNING:</h3>
+
+<p>This process will <strong>delete all local changes</strong>, including uncommitted and committed but not pushed changes.</p>
+
+<hr />
+
+<h2 id="-steps-to-force-pull-and-recover-remote-repository">✅ Steps to Force Pull and Recover Remote Repository:</h2>
+
+<h3 id="1-discard-uncommitted-changes-optional-but-recommended-if-youre-unsure"><strong>1. Discard uncommitted changes (optional but recommended if you’re unsure):</strong></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--hard</span>
+git clean <span class="nt">-fd</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">reset --hard</code>: resets tracked files to the last commit</li>
+  <li><code class="language-plaintext highlighter-rouge">clean -fd</code>: removes untracked files and directories</li>
+</ul>
+
+<hr />
+
+<h3 id="2-fetch-latest-remote-data"><strong>2. Fetch latest remote data:</strong></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch <span class="nt">--all</span>
+</code></pre></div></div>
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

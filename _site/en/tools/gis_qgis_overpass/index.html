@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>GIS & QGIS & Overpass</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>GIS &amp; QGIS &amp; Overpass | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GIS &amp; QGIS &amp; Overpass" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/en/tools/gis_qgis_overpass/" />
+<meta property="og:url" content="https://liuyian.uk/en/tools/gis_qgis_overpass/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="GIS &amp; QGIS &amp; Overpass" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"GIS &amp; QGIS &amp; Overpass","url":"https://liuyian.uk/en/tools/gis_qgis_overpass/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h1 id="useful-websites">Useful websites</h1>
+<ul>
+  <li><a href="https://docs.overturemaps.org/guides/buildings/#14/32.58453/-117.05154/0/60">Overtrue Maps - buildings</a></li>
+</ul>
+
+<h1 id="qgis">QGIS</h1>
+<h2 id="根據columns上色">根據columns上色</h2>
+<ul>
+  <li><img src="/assets/images/tools/qgis-10.png" alt="alt text" /></li>
+  <li>記得點<code class="language-plaintext highlighter-rouge">classify</code>才可渲染</li>
+  <li>好看的顏色
+    <ul>
+      <li><img src="/assets/images/tools/qgis-11.png" alt="alt text" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="調整geomatric">調整geomatric</h2>
+<ul>
+  <li>因tsv無法編輯，用這個方法變成暫存檔
+    <ul>
+      <li><img src="/assets/images/tools/qgis.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>用節點工具編輯向外拉
+    <ul>
+      <li><img src="/assets/images/tools/qgis-1.png" alt="alt text" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="刪除geomatry">刪除geomatry</h2>
+<ol>
+  <li>TSV無法編輯，存成暫存檔
+    <ul>
+      <li><img src="/assets/images/tools/qgis-3.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>選取geomatry
+    <ul>
+      <li><img src="/assets/images/tools/qgis-4.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>open <code class="language-plaintext highlighter-rouge">attribute table</code>, click <code class="language-plaintext highlighter-rouge">trash can</code> to delete
+    <ul>
+      <li><img src="/assets/images/tools/qgis-2.png" alt="alt text" /></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="steps-to-save-selected-geometries-as-a-new-layer">Steps to Save Selected Geometries as a New Layer:</h2>
+<ol>
+  <li>Select the Geometries:
+    <ul>
+      <li>Use the selection tools (e.g., Select Features by Rectangle or Select Features by Expression) to choose the geometries you want to save.</li>
+    </ul>
+  </li>
+  <li>Right-click on the Layer:
+    <ul>
+      <li>In the Layers panel, right-click the layer from which you have selected the geometries.</li>
+    </ul>
+  </li>
+  <li>Export the Selected Features:
+    <ul>
+      <li>Choose Export &gt; Save Selected Features As… from the context menu.</li>
+    </ul>
+  </li>
+  <li>Set the Output Format:
+    <ul>
+      <li>In the dialog that appears, set the format you want to export (e.g., ESRI Shapefile, GeoPackage, etc.).</li>
+      <li>Choose a file name and location where you want to save the new layer.</li>
+    </ul>
+  </li>
+  <li>Ensure “Selected Features Only” is Checked:
+    <ul>
+      <li>In the Export dialog, make sure the Selected Features Only option is checked, so only the selected geometries are saved.</li>
+    </ul>
+  </li>
+  <li>Save:
+    <ul>
+      <li>Click OK to save the selected geometries as a new layer.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="計算統計資料ex-sum">計算統計資料ex: sum</h2>
+<ol>
+  <li>右鍵選擇 <code class="language-plaintext highlighter-rouge">Processing Toolbox Panal</code>
+    <ul>
+      <li><img src="/assets/images/tools/qgis-5.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li>在panal中選 <code class="language-plaintext highlighter-rouge">basic statistics for fields</code>
+    <ul>
+      <li><img src="/assets/images/tools/qgis-6.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">select features</code> 選範圍
+    <ul>
+      <li><img src="/assets/images/tools/qgis-7.png" alt="alt text" /></li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">run</code> and find statisticsin it
+    <ul>
+      <li><img src="/assets/images/tools/qgis-8.png" alt="alt text" /></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="切割圖形">切割圖形</h2>
+<p>o	取出其中一個要切的PU
+o	Select feature(s)   -&gt; split feature(s)<br />
+o	若想重切 merge selected features<br />
+o	取消選擇feature:</p>
+
+<h2 id="表格新增欄位">表格新增欄位</h2>
+<ul>
+  <li><img src="/assets/images/tools/qgis-9.png" alt="alt text" /></li>
+</ul>
+
+<h1 id="overpass-turbo">Overpass turbo</h1>
+<h2 id="search-layer-is-negative">search layer is negative</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>out:json][timeout:300]<span class="p">;</span>
+
+relation[<span class="s2">"route"</span><span class="o">=</span><span class="s2">"subway"</span><span class="o">][</span><span class="s2">"network"</span><span class="o">=</span><span class="s2">"Delhi Metro"</span><span class="o">]</span><span class="p">;</span>
+way<span class="o">(</span>r<span class="o">)</span><span class="p">;</span>
+way._[<span class="s2">"layer"</span>~<span class="s2">"^(-1|-2|-3|-4|-5|-6|-7|-8|-9)$"</span><span class="o">]</span><span class="p">;</span>
+
+out geom<span class="p">;</span>
+</code></pre></div></div>
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

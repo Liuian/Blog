@@ -1,3 +1,7 @@
+---
+layout: default
+title: Vim
+---
 # Vim
 
 * **Open `.gitignore`**

@@ -1,3 +1,7 @@
+---
+layout: default
+title: Mac
+---
 # Timemechine
 1. 格式化硬碟
     1. 程式佔用硬碟 

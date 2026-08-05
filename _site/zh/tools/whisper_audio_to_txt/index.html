@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Whisper audio to txt</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/tocbot.css">
+        <link rel="stylesheet" href="/assets/css/rouge.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>Whisper audio to txt | Ian’s Blog</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Whisper audio to txt" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://liuyian.uk/zh/tools/whisper_audio_to_txt/" />
+<meta property="og:url" content="https://liuyian.uk/zh/tools/whisper_audio_to_txt/" />
+<meta property="og:site_name" content="Ian’s Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Whisper audio to txt" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Whisper audio to txt","url":"https://liuyian.uk/zh/tools/whisper_audio_to_txt/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    </head>
+    <body>
+        
+        
+        <nav class="navbar">
+            <button id="toggle-sidebar" class="expanded">☰</button>
+            <div class="nav-links">
+                <a id="home-link" href="/en/"><i class="fas fa-home"></i> Home</a>
+                <a id="tools-link" href="/en/tools/"><i class="fas fa-tools"></i> Tools</a>
+                <a id="notes-link" href="/en/notes/"><i class="fas fa-sticky-note"></i> Notes</a>
+                <a id="blog-link" href="/en/blog/"><i class="fas fa-pen-nib"></i> Blog</a>
+                <a id="about-link" href="/en/about/"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+            <div class="navbar-controls">
+                <select id="language-select" title="Select Language">
+                    <option value="en">EN</option>
+                    <option value="zh">繁中</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="sidebar-wrapper">
+                <nav class="sidebar js-toc"></nav>
+            </div>
+            <main class="content js-toc-content"><h1 id="whisper-audio-to-txt">Whisper audio to txt</h1>
+<h2 id="result-demo">Result Demo</h2>
+<pre><code class="language-txt">1
+00:00:00,000 --&gt; 00:00:03,500
+那我們這次的目標呢
+
+2
+00:00:03,500 --&gt; 00:00:07,299
+是希望就是點了那個button之後啊
+
+3
+00:00:07,299 --&gt; 00:00:10,500
+網頁上的資訊可以有更動
+</code></pre>
+
+<h2 id="python-code">Python Code</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">whisper</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="sh">"</span><span class="s">/Users/peggy/Documents/youtube影片/11-軟體開發紀錄/（剪輯）react-3.mp4</span><span class="sh">"</span>
+
+<span class="sh">'''</span><span class="s">
+# 一般模式
+model = whisper.load_model(</span><span class="sh">"</span><span class="s">base</span><span class="sh">"</span><span class="s">)
+
+result = model.transcribe(file_path, fp16=False, language=</span><span class="sh">"</span><span class="s">zh</span><span class="sh">"</span><span class="s">)
+print(result[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="s">])
+
+# 寫進檔案
+# Write the text portion of the transcription result to a file named result.txt
+# with open(</span><span class="sh">"</span><span class="s">result.txt</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="s">) as file:
+#     file.write(result[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="s">])
+</span><span class="sh">'''</span>
+
+<span class="c1"># 轉為srt檔案
+# 載入模型並進行轉錄
+</span><span class="n">prompt</span> <span class="o">=</span> <span class="sh">'</span><span class="s">以下是普通話的句子</span><span class="sh">'</span>   <span class="c1"># 轉錄成繁體中文 
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">whisper</span><span class="p">.</span><span class="nf">load_model</span><span class="p">(</span><span class="sh">"</span><span class="s">large</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1">#result = model.transcribe(file_path, fp16=False, language="zh", initial_prompt = prompt)
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">transcribe</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">fp16</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">initial_prompt</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">)</span>
+<span class="n">transcription_text</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">transcription_segments</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="sh">"</span><span class="s">segments</span><span class="sh">"</span><span class="p">]</span>
+<span class="c1">#print(transcription_segments)
+</span>
+<span class="c1"># 將時間戳轉換為SRT格式
+</span><span class="k">def</span> <span class="nf">to_srt_time</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">timestamp</span> <span class="o">//</span> <span class="mi">3600</span><span class="p">)</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="nf">int</span><span class="p">((</span><span class="n">timestamp</span> <span class="o">//</span> <span class="mi">60</span><span class="p">)</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">timestamp</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">milliseconds</span> <span class="o">=</span> <span class="nf">int</span><span class="p">((</span><span class="n">timestamp</span> <span class="o">-</span> <span class="nf">int</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">hours</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">seconds</span><span class="si">:</span><span class="mi">02</span><span class="n">d</span><span class="si">}</span><span class="s">,</span><span class="si">{</span><span class="n">milliseconds</span><span class="si">:</span><span class="mi">03</span><span class="n">d</span><span class="si">}</span><span class="sh">"</span>
+
+<span class="c1"># 創建SRT字幕
+</span><span class="n">srt_content</span> <span class="o">=</span> <span class="sh">""</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">segment</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">transcription_segments</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">start_idx</span> <span class="o">=</span> <span class="n">segment</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">start</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">end_idx</span> <span class="o">=</span> <span class="n">segment</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">"</span><span class="s">end</span><span class="sh">"</span><span class="p">)</span>
+    
+    <span class="c1"># 檢查關鍵字是否存在
+</span>    <span class="k">if</span> <span class="n">start_idx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">end_idx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="nf">to_srt_time</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="sh">"</span><span class="s">start</span><span class="sh">"</span><span class="p">])</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="nf">to_srt_time</span><span class="p">(</span><span class="n">segment</span><span class="p">[</span><span class="sh">"</span><span class="s">end</span><span class="sh">"</span><span class="p">])</span>
+        <span class="n">subtitle_text</span> <span class="o">=</span> <span class="n">segment</span><span class="p">[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">srt_content</span> <span class="o">+=</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">start_time</span><span class="si">}</span><span class="s"> --&gt; </span><span class="si">{</span><span class="n">end_time</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">subtitle_text</span><span class="si">}</span><span class="se">\n\n</span><span class="sh">"</span>
+
+<span class="c1"># 將SRT內容寫入檔案
+</span><span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">result.srt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="nb">file</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">srt_content</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">SRT檔案已成功生成</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+</main>
+        </div>
+        <script src="/assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+    </body>
+</html>

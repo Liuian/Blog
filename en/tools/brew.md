@@ -1,3 +1,9 @@
+---
+layout: default
+title: Brew
+---
+
+這裡開始是你的文章內容...
 # MacOS - Homebrew
 ## brew list in my macbook pro
 ### formulae

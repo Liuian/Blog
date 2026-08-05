@@ -9,7 +9,7 @@
   - [3. Decide your bed time push back from your wake up time in a unit of 90 minutes.](#3-decide-your-bed-time-push-back-from-your-wake-up-time-in-a-unit-of-90-minutes)
 - [Some tips to follow these sleep time methods.](#some-tips-to-follow-these-sleep-time-methods)
 
-![image](../assets/images/blog/sleep3.jpg)   
+![image](/assets/images/blog/sleep3.jpg)   
 
 `Key points of this article.`
 
