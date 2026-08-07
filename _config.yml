@@ -11,3 +11,6 @@ permalink: pretty
 # 排除不需要編譯的資料夾
 exclude:
   - LICENSE
+  - assets
+  - blog_backend
+  - node_modules
