@@ -89,6 +89,8 @@ code {  /* code - Additional styling for code content */
     border-radius: 4px;
 }
 
+
+
 p code, li code {   /* code - Inline code styling (e.g. `example`) */
     background-color: var(--background-color);
     color: var(--text-color);
@@ -250,7 +252,159 @@ p code, li code {   /* code - Inline code styling (e.g. `example`) */
 #toggle-sidebar:hover {
     background: var(--accent-color);
 }
- 
+
+/* interaction section */
+#interaction-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#auth-status {
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0 0.35rem 0 0;
+    border-radius: 50%;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+.github-login-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: 0.5rem;
+    color: white;
+    background: #24292e;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.github-login-btn:hover {
+    color: white;
+    background: #57606a;
+}
+
+.logout-btn {
+    margin-left: 10px;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    color: white;
+    background: var(--primary-color);
+}
+
+.like-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    color: var(--text-color);
+    background: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.like-btn:hover {
+    background: #fff0f0;
+    border-color: #ff4d4d;
+    transform: translateY(-1px);
+}
+
+.like-btn.is-liked {
+    background: #ffe6e6;
+    border-color: #ff4d4d;
+}
+
+.comments-title {
+    margin-top: 30px;
+}
+
+.comment-input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 80px;
+    margin-bottom: 10px;
+    padding: 0.75rem;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    color: var(--text-color);
+    background: white;
+    font: inherit;
+    resize: vertical;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(94, 161, 215, 0.2);
+}
+
+.comment-input:disabled,
+.submit-comment-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.comment-input:disabled {
+    background: #eef1f4;
+}
+
+.submit-comment-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background: var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-comment-btn:hover:not(:disabled) {
+    background: var(--accent-color);
+}
+
+#comments-list {
+    margin-top: 20px;
+}
+
+.comment-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.comment-avatar {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 0.35rem 0 0;
+    border-radius: 50%;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+.comment-item small {
+    color: #888;
+}
+
+.comment-item p {
+    margin: 5px 0 0;
+    overflow-wrap: anywhere;
+}
+
+.comments-empty {
+    color: #888;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links {

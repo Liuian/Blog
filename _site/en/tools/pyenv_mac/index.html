@@ -101,162 +101,27 @@
                 
                 
                 
-                <div id="interaction-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <div id="auth-status" style="margin-bottom: 20px;"></div>
+                <div id="interaction-section">
+                    <div id="auth-status"></div>
 
-                    <button id="like-btn" onclick="toggleLike()" style="padding: 8px 16px; border-radius: 20px; cursor: pointer; border: 1px solid #ddd;">
+                    <button id="like-btn" class="like-btn" onclick="toggleLike()">
                         ❤️ 愛心 <span id="like-count">0</span>
                     </button>
 
-                    <h3 style="margin-top: 30px;">文章留言</h3>
+                    <h3 class="comments-title">文章留言</h3>
 
                     <div id="comment-form-container">
-                        <textarea id="comment-input" placeholder="登入後即可發表留言..." style="width: 100%; height: 80px; margin-bottom: 10px;"></textarea>
-                        <button id="submit-comment-btn" onclick="submitComment()">發送留言</button>
+                        <textarea id="comment-input" class="comment-input" placeholder="登入後即可發表留言..."></textarea>
+                        <button id="submit-comment-btn" class="submit-comment-btn" onclick="submitComment()">發送留言</button>
                     </div>
 
-                    <div id="comments-list" style="margin-top: 20px;"></div>
+                    <div id="comments-list"></div>
                 </div>
 
-                <script>
-                    const currentSlug = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
-                    let currentUser = null;
-
-                    async function loadInteraction() {
-                        try {
-                            const authRes = await fetch('/api/auth/me');
-                            if (!authRes.ok) throw new Error('auth failed');
-                            const authData = await authRes.json();
-                            currentUser = authData.user;
-                        } catch (error) {
-                            currentUser = null;
-                        }
-
-                        renderAuthUI();
-                        loadStats();
-                        loadComments();
-                    }
-
-                    function renderAuthUI() {
-                        const container = document.getElementById('auth-status');
-                        const commentInput = document.getElementById('comment-input');
-                        const submitBtn = document.getElementById('submit-comment-btn');
-
-                        if (!container) return;
-
-                        if (currentUser) {
-                            container.innerHTML = `
-                                <img src="${currentUser.avatar_url}" width="24" height="24" style="border-radius:50%; vertical-align:middle;">
-                                <span>${currentUser.username}</span>
-                                <button onclick="logout()" style="margin-left: 10px;">登出</button>
-                            `;
-                            if (commentInput) commentInput.disabled = false;
-                            if (submitBtn) submitBtn.disabled = false;
-                        } else {
-                            const redirectUrl = encodeURIComponent(window.location.href);
-                            container.innerHTML = `
-                                <span>👉 必須登入才能按讚與留言：</span>
-                                <a href="/api/auth/github?redirect=${redirectUrl}" style="padding: 5px 10px; background: #24292e; color: white; border-radius: 4px; text-decoration: none;">GitHub 帳號登入</a>
-                            `;
-                            if (commentInput) commentInput.disabled = true;
-                            if (submitBtn) submitBtn.disabled = true;
-                        }
-                    }
-
-                    async function loadStats() {
-                        try {
-                            const res = await fetch(`/api/stats/${encodeURIComponent(currentSlug)}`);
-                            if (!res.ok) throw new Error('stats failed');
-                            const data = await res.json();
-                            const countEl = document.getElementById('like-count');
-                            const likeBtn = document.getElementById('like-btn');
-                            if (countEl) countEl.innerText = data.likes || 0;
-                            if (likeBtn) {
-                                if (data.hasLiked) {
-                                    likeBtn.style.background = '#ffe6e6';
-                                    likeBtn.style.borderColor = '#ff4d4d';
-                                } else {
-                                    likeBtn.style.background = '#fff';
-                                    likeBtn.style.borderColor = '#ddd';
-                                }
-                            }
-                        } catch (error) {
-                            console.warn('loadStats failed', error);
-                        }
-                    }
-
-                    async function toggleLike() {
-                        if (!currentUser) return alert('請先登入後再按讚！');
-
-                        const res = await fetch(`/api/likes/${encodeURIComponent(currentSlug)}`, { method: 'POST' });
-                        if (res.status === 401) return alert('請先登入！');
-                        loadStats();
-                    }
-
-                    async function loadComments() {
-                        try {
-                            const res = await fetch(`/api/comments/${encodeURIComponent(currentSlug)}`);
-                            if (!res.ok) throw new Error('comments failed');
-                            const comments = await res.json();
-                            const list = document.getElementById('comments-list');
-                            if (!list) return;
-
-                            list.innerHTML = comments.map(c => `
-                                <div style="border-bottom: 1px solid #f0f0f0; padding: 10px 0;">
-                                    <img src="${c.avatar_url || '/assets/images/default-avatar.png'}" width="20" height="20" style="border-radius:50%;">
-                                    <strong>${c.username || '匿名'}</strong> <small style="color:#888;">${new Date(c.created_at).toLocaleString()}</small>
-                                    <p style="margin: 5px 0 0 0;">${escapeHtml(c.content || '')}</p>
-                                </div>
-                            `).join('') || '<p style="color:#888;">暫無留言，來搶頭香吧！</p>';
-                        } catch (error) {
-                            console.warn('loadComments failed', error);
-                        }
-                    }
-
-                    async function submitComment() {
-                        if (!currentUser) return alert('請先登入！');
-
-                        const input = document.getElementById('comment-input');
-                        const content = input ? input.value.trim() : '';
-                        if (!content) return alert('留言內容不能為空');
-
-                        const res = await fetch(`/api/comments/${encodeURIComponent(currentSlug)}`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ content })
-                        });
-
-                        if (res.ok) {
-                            if (input) input.value = '';
-                            loadComments();
-                        } else {
-                            alert('發送失敗');
-                        }
-                    }
-
-                    async function logout() {
-                        try {
-                            await fetch('/api/auth/logout', { method: 'POST' });
-                        } catch (error) {
-                            console.warn('logout failed', error);
-                        }
-                        window.location.reload();
-                    }
-
-                    function escapeHtml(str) {
-                        return String(str || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
-                    }
-
-                    window.toggleLike = toggleLike;
-                    window.submitComment = submitComment;
-                    window.logout = logout;
-
-                    document.addEventListener('DOMContentLoaded', loadInteraction);
-                </script>
                 
             </main>
         </div>
-        <script src="/assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.js"></script>
+        <script src="/assets/js/main.js"></script>
     </body>
 </html>

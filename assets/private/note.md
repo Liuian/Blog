@@ -22,9 +22,14 @@ export GITHUB_REDIRECT_URI="http://127.0.0.1:3000/api/auth/github/callback"
 export NODE_ENV="development"
 
 # Test 步驟
-- `pm2 status`
-- `pm2 logs blog-api --lines 20`
-  - Debug 使用
+- Debug 使用
+  - `pm2 status`
+  - `pm2 logs blog-api --lines 20`
+- 查看DB
+  - 查看所有表格
+    - `node -e "const DB = require('better-sqlite3'); console.table(new DB('blog.db').prepare(\"SELECT name FROM sqlite_master WHERE type='table'\").all());"`
+  - 查看個別表格內容
+    - `node -e "const DB = require('better-sqlite3'); console.table(new DB('blog.db').prepare('SELECT * FROM comments').all());"`
 
 
 # Used Skills
