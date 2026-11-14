@@ -6,6 +6,6 @@ _site/
 .env
 *.db
 blog_backend/node_modules/
-blog_backend/private/
+blog_backend/private_files/
 
 .DS_Store
