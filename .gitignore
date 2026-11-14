@@ -3,9 +3,9 @@ _site/
 .jekyll-cache/
 
 # 忽略 Node.js API 後端敏感檔案
-blog_backend/node_modules/
-*.db
 .env
+*.db
+blog_backend/node_modules/
+blog_backend/private/
 
-# private
-assets/private/
+.DS_Store
