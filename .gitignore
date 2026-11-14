@@ -6,3 +6,6 @@ _site/
 blog_backend/node_modules/
 blog_backend/blog.db
 .env
+
+# private
+assets/private/
