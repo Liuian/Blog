@@ -1,6 +1,11 @@
 title: Ian's Blog
 url: "https://liuyian.uk"
 
+# Markdown 解析設定 (啟用 GitHub Flavored Markdown)
+markdown: kramdown
+kramdown:
+  input: GFM
+
 # 啟用外掛
 plugins:
   - jekyll-seo-tag

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 1. 初始化 tocbot；即使 CDN 失敗，也不能阻止其他按鈕初始化
     if (typeof tocbot !== 'undefined') {
+        const navbarOffset = window.innerWidth <= 768 ? 104 : 76;
         tocbot.init({
             tocSelector: '.js-toc',
             contentSelector: '.js-toc-content',
@@ -12,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             hasInnerContainers: true,
             collapseDepth: 6,
             scrollSmooth: true,
+            scrollSmoothOffset: -navbarOffset,
+            headingsOffset: navbarOffset,
             orderedList: false,
         });
     } else {

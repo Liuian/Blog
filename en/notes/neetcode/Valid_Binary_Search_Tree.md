@@ -187,7 +187,7 @@
 
     - Note: BFS v.s. DFS
 
-        | 演算法 | Recursive | Iterative (Stack/Queue) | 常見寫法           |
-        | --- | --------- | ----------------------- | -------------- |
-        | DFS | ✅         | ✅（用 stack）              | 兩種都常見          |
-        | BFS | ❌         | ✅（用 queue）              | 幾乎只用 iterative |
+      | 演算法 | Recursive | Iterative (Stack/Queue) | 常見寫法           |
+      | ------ | --------- | ----------------------- | ------------------ |
+      | DFS    | ✅         | ✅（用 stack）              | 兩種都常見          |
+      | BFS    | ❌         | ✅（用 queue）              | 幾乎只用 iterative |
